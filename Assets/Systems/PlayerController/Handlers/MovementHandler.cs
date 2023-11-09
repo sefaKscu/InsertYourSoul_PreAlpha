@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace InsertYourSoul.PlayerController
 {
-    public class MovementHandlerSnappy : ITickable
+    public class MovementHandler : ITickable
     {
         private IPlayerController parent;
-        public MovementHandlerSnappy(IPlayerController parent)
+        public MovementHandler(IPlayerController parent)
         {
             this.parent = parent;
         }

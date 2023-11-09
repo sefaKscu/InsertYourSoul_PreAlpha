@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8841243378822029542}
   - component: {fileID: 6531643071177803619}
   - component: {fileID: 624383237971321308}
-  - component: {fileID: 6655433947112605662}
+  - component: {fileID: 6434908018671474812}
   - component: {fileID: 7584074069762647066}
   - component: {fileID: 1467368279254319374}
+  - component: {fileID: 6655433947112605662}
   - component: {fileID: 8410336360111211253}
-  - component: {fileID: 6434908018671474812}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -87,7 +87,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6655433947112605662
+--- !u!114 &6434908018671474812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,15 +96,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 543056412889292190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac88890263e0b6442b3f315f96811f07, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e0224514dac1ce4890fd6f068ba6707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterTemplate: {fileID: 11400000, guid: 5a69ab6746a47ee4092273c1bb08c9e9, type: 2}
-  playerLife: {fileID: 11400000, guid: adab5ddcea7aa1b49a07ce18a303ef54, type: 2}
-  playerMana: {fileID: 11400000, guid: acdd9d7c1966eca4b84a259443217bf0, type: 2}
-  characterStats: {fileID: 11400000, guid: 0342443de3a2fda4d9be1b30f17e302b, type: 2}
-  testItem: {fileID: 11400000, guid: 819ef5a3b8fac8d488d99f81df10bc98, type: 2}
-  isDebugging: 0
+  model:
+    walkSpeedConstant: 2
+    runSpeedConstant: 5
+    sprintSpeedConstant: 8
+    defaultDeceleration: 16
+    gravity: 9.8
+    groundedGravity: 0.6
+    rotationFactorPerFrame: 10
 --- !u!114 &7584074069762647066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +138,24 @@ MonoBehaviour:
   hitPointSphere: {fileID: 0}
   playerHeightSphere: {fileID: 0}
   requiredHitPointSphere: {fileID: 0}
+--- !u!114 &6655433947112605662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543056412889292190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac88890263e0b6442b3f315f96811f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTemplate: {fileID: 11400000, guid: 5a69ab6746a47ee4092273c1bb08c9e9, type: 2}
+  playerLifeSO: {fileID: 11400000, guid: adab5ddcea7aa1b49a07ce18a303ef54, type: 2}
+  playerManaSO: {fileID: 11400000, guid: acdd9d7c1966eca4b84a259443217bf0, type: 2}
+  characterStatsSO: {fileID: 11400000, guid: 0342443de3a2fda4d9be1b30f17e302b, type: 2}
+  testItem: {fileID: 11400000, guid: 819ef5a3b8fac8d488d99f81df10bc98, type: 2}
+  isDebugging: 0
 --- !u!114 &8410336360111211253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +181,7 @@ MonoBehaviour:
     CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: ff7806b729a64584ebca78eacc7e9dd5, type: 2}
     IsDebuggin: 0
-  - ability: {fileID: 11400000, guid: 655f31276c714fd45b8f7c943d2b58d9, type: 2}
+  - ability: {fileID: 11400000, guid: 83d1a5d480523dc4ab64be204371adae, type: 2}
     state: 0
     ActiveTimeCounter: 0
     CooldownTimeCounter: 0
@@ -179,26 +199,6 @@ MonoBehaviour:
     CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: fa30c4a5cadc15d419d9c871996f379f, type: 2}
     IsDebuggin: 0
---- !u!114 &6434908018671474812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543056412889292190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0224514dac1ce4890fd6f068ba6707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model:
-    walkSpeedConstant: 2
-    runSpeedConstant: 5
-    sprintSpeedConstant: 8
-    defaultDeceleration: 16
-    gravity: 9.8
-    groundedGravity: 0.6
-    rotationFactorPerFrame: 10
 --- !u!1 &4475231302126899967
 GameObject:
   m_ObjectHideFlags: 0

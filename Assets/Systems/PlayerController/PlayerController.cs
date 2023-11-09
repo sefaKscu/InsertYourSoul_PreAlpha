@@ -22,13 +22,13 @@ namespace InsertYourSoul.PlayerController
 
         RotationHandler rotationHandler;
         GravityHandler gravityHandler;
-        MovementHandlerSnappy movementHandler;
+        MovementHandler movementHandler;
         AnimationHandler animationHandler;
         private void DeclareHandlers()
         {
             handlers.Add(rotationHandler = new RotationHandler(this));
             handlers.Add(gravityHandler = new GravityHandler(this));
-            handlers.Add(movementHandler = new MovementHandlerSnappy(this));
+            handlers.Add(movementHandler = new MovementHandler(this));
             handlers.Add(animationHandler = new AnimationHandler(this));
         }
 

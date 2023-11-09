@@ -5,12 +5,12 @@ namespace InsertYourSoul.PlayerController
     [RequireComponent(typeof(InputHandler))]
     public class InputDistributor : MonoBehaviour
     {
-        private InputHandler InputHandler;
+        private IProvideInputData InputHandler;
         private IReciveInputPackage[] inputReceivers;
 
         private void Awake()
         {
-            InputHandler = GetComponent<InputHandler>();
+            InputHandler = GetComponent<IProvideInputData>();
             inputReceivers = GetComponents<IReciveInputPackage>();
         }
         private void Update()

@@ -3679,12 +3679,6 @@ PrefabInstance:
       propertyPath: requiredHitPointSphere
       value: 
       objectReference: {fileID: 2015925716}
-    - target: {fileID: 8410336360111211253, guid: 6093e107ccfa65149bb2a2183f38b8ed,
-        type: 3}
-      propertyPath: AbilitySlots.Array.data[1].ability
-      value: 
-      objectReference: {fileID: 11400000, guid: 83d1a5d480523dc4ab64be204371adae,
-        type: 2}
     - target: {fileID: 8841243378822029542, guid: 6093e107ccfa65149bb2a2183f38b8ed,
         type: 3}
       propertyPath: m_LocalPosition.x
