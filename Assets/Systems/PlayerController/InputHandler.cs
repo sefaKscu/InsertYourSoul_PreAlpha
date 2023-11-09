@@ -7,13 +7,15 @@ namespace InsertYourSoul.PlayerController
     {
         InputActions inputActions;
 
-        IsometricRaycaster isoRaycaster;
-
+        #region Populate in Editor
         [Header("Mouse Raycast Options")]
         [SerializeField] Camera mainCam;
         [SerializeField] float orthographicAngle = 26.565f;
         [SerializeField] Transform raycastReference;
+        #endregion
 
+        #region Isometric Raycaster
+        IsometricRaycaster isoRaycaster;
         private void SetupIsometricRaycaster()
         {
             if (isoRaycaster == null)
@@ -29,7 +31,19 @@ namespace InsertYourSoul.PlayerController
                 isoRaycaster = new IsometricRaycaster(mainCam, raycastReference, 300f, orthographicAngle);
             }
         }
+        #endregion
 
+        #region MonoBehaviour
+        private void Awake()
+        {
+            SetupIsometricRaycaster();
+            SubscribeToInputsActions();
+        }
+
+        private void OnEnable() => inputActions.Enable();
+        private void OnDisable() => inputActions.Disable();
+        private void Update() => SetAimDirection();
+        #endregion
 
         #region InputData
         // InputData
@@ -90,18 +104,6 @@ namespace InsertYourSoul.PlayerController
             }
         }
         private bool CanMove => isMoving && !isAiming && !isAimingWithMouse;
-        #endregion
-
-        #region MonoBehaviour
-        private void Awake()
-        {
-            SetupIsometricRaycaster();
-            SubscribeToInputsActions();
-        }
-
-        private void OnEnable() => inputActions.Enable();
-        private void OnDisable() => inputActions.Disable();
-        private void Update() => SetAimDirection();
         #endregion
 
         #region InputActionSubscribers
@@ -204,6 +206,7 @@ namespace InsertYourSoul.PlayerController
         }
         #endregion
 
+        #region Aiming
         private void SetAimDirection()
         {
             if (isAimingWithMouse)
@@ -217,6 +220,7 @@ namespace InsertYourSoul.PlayerController
             }
             DebugMousePointers(isoRaycaster);
         }
+        #endregion
 
         #region Debugging
         // Debuggin
