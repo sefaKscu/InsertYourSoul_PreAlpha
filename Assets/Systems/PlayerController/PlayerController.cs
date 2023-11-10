@@ -18,11 +18,15 @@ namespace InsertYourSoul.PlayerController
             inputData = package;
         }
 
-        private ICharacter character;
-        public bool IsAlive => character.IsAlive;
 
+        private ICharacter character;
+        private AbilityHandler abilityHandler;
         private IProvideAimData aimIndicator;
+
         public AimDataPackage AimData => aimIndicator.GetAimData;
+        public bool IsAlive => character.IsAlive;
+        public bool IsCasting => abilityHandler.IsCasting;
+        public bool IsMoving => CharacterVelocity > 0f;
 
 
         private List<ITickable> handlers = new List<ITickable>();
@@ -39,10 +43,7 @@ namespace InsertYourSoul.PlayerController
             handlers.Add(animationHandler = new AnimationHandler(this));
         }
 
-        public AbilityHandler abilityHandler;
-        public bool IsCasting => abilityHandler.IsCasting;
 
-        public bool IsMoving => CharacterVelocity > 0f;
         public float CharacterVelocity
         {
             get

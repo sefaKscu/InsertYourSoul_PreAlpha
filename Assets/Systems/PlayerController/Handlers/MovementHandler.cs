@@ -38,7 +38,7 @@ namespace InsertYourSoul.PlayerController
         {
             get 
             {
-                if (IsMovementPressed)
+                if (IsMovementPressed && !parent.IsCasting)
                 {
                     cachedInputVector = InputVector;
                 }
