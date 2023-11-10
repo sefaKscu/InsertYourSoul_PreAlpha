@@ -7,10 +7,24 @@ namespace InsertYourSoul.AbilitySystem
     public class AbilityHandler : MonoBehaviour, IReciveInputPackage
     {
         [SerializeField] AbilityReferences references;
-        [SerializeField] IProvideAimData targetter;
+        [SerializeField] IProvideAimData aimIndicator;
         [SerializeField] ICharacter character;
-        private bool isAlive;
+        public bool IsAlive => character.IsAlive;
 
+        public bool IsCasting
+        {
+            get
+            {
+                foreach (AbilitySlot slot in AbilitySlots)
+                {
+                    if (slot.IsActive)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
         public AbilitySlot[] AbilitySlots = new AbilitySlot[4];
         private void SetSlots()
         {
@@ -30,7 +44,7 @@ namespace InsertYourSoul.AbilitySystem
         private void Awake()
         {
             character = GetComponent<ICharacter>();
-            targetter = GameObject.FindGameObjectWithTag("TargetIndicator").GetComponent<IProvideAimData>();
+            aimIndicator = GameObject.FindGameObjectWithTag("TargetIndicator").GetComponent<IProvideAimData>();
             SetSlots();
         }
         private void Update()
@@ -42,7 +56,7 @@ namespace InsertYourSoul.AbilitySystem
 
         private void UpdateTargetPosition()
         {
-            references.AimData = targetter.GetAimData;
+            references.AimData = aimIndicator.GetAimData;
         }
 
         #region Inputs
@@ -50,12 +64,13 @@ namespace InsertYourSoul.AbilitySystem
         public void CacheInputs(InputStreamDataPackage _inputStream, bool _isAlive) 
         {
             inputs = _inputStream;
-            isAlive = _isAlive;
         }
 
         private void CheckInputs()
         {
-            if (!isAlive)
+            if (!IsAlive)
+                return;
+            if (IsCasting)
                 return;
 
             if (inputs.IsAbility0ButtonDown)

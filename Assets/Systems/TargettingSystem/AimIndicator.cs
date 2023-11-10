@@ -25,8 +25,26 @@ namespace InsertYourSoul.TargettingSystem
             }
             else if(!HasValidTarget)
             {
-                dataPackage.TargetPosition = transform.position;
-                dataPackage.TargetDirection = spellExit.forward;
+                if (inputs.IsAiming || inputs.IsAimingWithMouse)
+                {
+                    Vector3 _targetDirection = (transform.position - spellExit.transform.position);
+                    _targetDirection.y = 0f;
+                    if (_targetDirection.sqrMagnitude > .5f)
+                    {
+                        dataPackage.TargetPosition = transform.position;
+                        dataPackage.TargetDirection = _targetDirection.normalized;
+                    }
+                    else
+                    {
+                        dataPackage.TargetPosition = transform.position;
+                        dataPackage.TargetDirection = spellExit.forward;
+                    }
+                }
+                else
+                {
+                    dataPackage.TargetPosition = transform.position;
+                    dataPackage.TargetDirection = spellExit.forward;
+                }
             }
         }
 

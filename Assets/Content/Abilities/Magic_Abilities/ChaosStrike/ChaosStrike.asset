@@ -17,6 +17,6 @@ MonoBehaviour:
   AbilityPrefab: {fileID: 3010076282003001424, guid: c4b1d15f75280f149a32be6166035494,
     type: 3}
   description: 
-  activeSeconds: 0.2
+  activeSeconds: 1
   cooldownSeconds: 0.3
   manaCost: 5

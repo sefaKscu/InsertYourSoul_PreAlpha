@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 59189559}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: Environment & Lighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,11 +251,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RadiantStrike
-      objectReference: {fileID: 0}
-    - target: {fileID: 759509137007791149, guid: 4571334918c34bd4a8596d2828b3b922,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1426057523182103800, guid: 4571334918c34bd4a8596d2828b3b922,
         type: 3}

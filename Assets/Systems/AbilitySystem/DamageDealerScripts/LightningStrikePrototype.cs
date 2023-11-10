@@ -39,7 +39,7 @@ namespace InsertYourSoul
         {
             if (intensity > maxIntensity)
             {
-                Destroy(this.gameObject, 0.5f);
+                Destroy(this.gameObject, 1f);
                 return false;
             }
             if (spellEffect == null)

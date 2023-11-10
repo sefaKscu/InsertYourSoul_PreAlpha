@@ -17,13 +17,15 @@ namespace InsertYourSoul.AbilitySystem
         public void Initialize(ICharacter _character)
         {
             this.character = _character;
-            state = AbilitySlotState.Ready;
+            State = AbilitySlotState.Ready;
             UpdateAbilityInSlotData();
         }
 
+        public bool IsActive => State == AbilitySlotState.Active;
+
         private ICharacter character;
-        public Ability ability;
-        public AbilitySlotState state;
+        public Ability Ability;
+        public AbilitySlotState State;
         
 
         // Counters
@@ -32,30 +34,30 @@ namespace InsertYourSoul.AbilitySystem
 
         public void Use(AbilityReferences _references)
         {
-            if (ability == null)
+            if (Ability == null)
             {
                 Debugger("No ability assigned.");
                 return;
             }
-            if (state == AbilitySlotState.Ready)
+            if (State == AbilitySlotState.Ready)
             {
-                if (character.SpendMana(ability.ManaCost))
+                if (character.SpendMana(Ability.ManaCost))
                 {
-                    ability.Activate(_references);
-                    state = AbilitySlotState.Active;
-                    ActiveTimeCounter = ability.ActiveSeconds;
+                    Ability.Activate(_references);
+                    State = AbilitySlotState.Active;
+                    ActiveTimeCounter = Ability.ActiveSeconds;
                 }
                 else
                 {
-                    state = AbilitySlotState.InsufficientMana;
+                    State = AbilitySlotState.InsufficientMana;
                 }
-                Debugger(ability.name + " " + state);
+                Debugger(Ability.name + " " + State);
             }
         }
 
         public void Tick()
         {
-            if (ability == null)
+            if (Ability == null)
                 return;
 
             SwitchStates();
@@ -64,22 +66,22 @@ namespace InsertYourSoul.AbilitySystem
 
         private void SwitchStates()
         {
-            switch (state)
+            switch (State)
             {
                 case AbilitySlotState.Ready:
-                    if (ability.ManaCost > character.CurrentMana)
+                    if (Ability.ManaCost > character.CurrentMana)
                     {
-                        state = AbilitySlotState.InsufficientMana;
-                        Debugger(ability.Name + " " + state);
+                        State = AbilitySlotState.InsufficientMana;
+                        Debugger(Ability.Name + " " + State);
                     }
                     break;
 
                 case AbilitySlotState.InsufficientMana:
-                    Debugger(state + " for " + ability.name);
-                    if (character.CurrentMana > ability.ManaCost)
+                    Debugger(State + " for " + Ability.name);
+                    if (character.CurrentMana > Ability.ManaCost)
                     {
-                        state = AbilitySlotState.Ready;
-                        Debugger(ability.Name + " " + state);
+                        State = AbilitySlotState.Ready;
+                        Debugger(Ability.Name + " " + State);
                     }
                     break;
 
@@ -91,9 +93,9 @@ namespace InsertYourSoul.AbilitySystem
                     else
                     {
                         ActiveTimeCounter = 0f;
-                        state = AbilitySlotState.Cooldown;
-                        CooldownTimeCounter = ability.CooldownSeconds;
-                        Debugger(ability.Name + " " + state);
+                        State = AbilitySlotState.Cooldown;
+                        CooldownTimeCounter = Ability.CooldownSeconds;
+                        Debugger(Ability.Name + " " + State);
                     }
                     break;
 
@@ -104,16 +106,16 @@ namespace InsertYourSoul.AbilitySystem
                     }
                     else
                     {
-                        if (ability.ManaCost > character.CurrentMana)
+                        if (Ability.ManaCost > character.CurrentMana)
                         {
-                            state = AbilitySlotState.InsufficientMana;
-                            Debugger(ability.Name + " " + state);
+                            State = AbilitySlotState.InsufficientMana;
+                            Debugger(Ability.Name + " " + State);
                         }
                         else
                         {
                             CooldownTimeCounter = 0f;
-                            state = AbilitySlotState.Ready;
-                            Debugger(ability.Name + " " + state);
+                            State = AbilitySlotState.Ready;
+                            Debugger(Ability.Name + " " + State);
                         }
                     }
                     break;
@@ -122,15 +124,15 @@ namespace InsertYourSoul.AbilitySystem
 
         public void AddAbility(Ability _ability)
         {
-            if (ability != null)
+            if (Ability != null)
                 RemoveAbility();
 
-            ability = _ability;
+            Ability = _ability;
             UpdateAbilityInSlotData();
         }
         public void RemoveAbility()
         {
-            ability = null;
+            Ability = null;
             UpdateAbilityInSlotData();
         }
 
@@ -141,16 +143,16 @@ namespace InsertYourSoul.AbilitySystem
         private float cooldownProgPercent;
         private void UpdateAbilityInSlotData()
         {
-            if (ability != null)
-                SlotData.ChangeAbility(ability);
+            if (Ability != null)
+                SlotData.ChangeAbility(Ability);
         }
 
         private void UpdateValuesInSlotData()
         {
-            SlotData.State = state;
-            activeProgPercent = 1f - (ActiveTimeCounter / ability.ActiveSeconds);
-            cooldownProgPercent = CooldownTimeCounter / ability.CooldownSeconds;
-            SlotData.UpdateData(activeProgPercent, cooldownProgPercent, state);
+            SlotData.State = State;
+            activeProgPercent = 1f - (ActiveTimeCounter / Ability.ActiveSeconds);
+            cooldownProgPercent = CooldownTimeCounter / Ability.CooldownSeconds;
+            SlotData.UpdateData(activeProgPercent, cooldownProgPercent, State);
         }
         #endregion
 

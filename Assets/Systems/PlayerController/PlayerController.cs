@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using InsertYourSoul.AbilitySystem;
+using InsertYourSoul.CharacterSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InsertYourSoul.PlayerController
@@ -6,7 +8,6 @@ namespace InsertYourSoul.PlayerController
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour, IReciveInputPackage, IPlayerController
     {
-
         public PlayerControlModel Model => model;
         public PlayerControlModel model;
 
@@ -16,6 +17,12 @@ namespace InsertYourSoul.PlayerController
         {
             inputData = package;
         }
+
+        private ICharacter character;
+        public bool IsAlive => character.IsAlive;
+
+        private IProvideAimData aimIndicator;
+        public AimDataPackage AimData => aimIndicator.GetAimData;
 
 
         private List<ITickable> handlers = new List<ITickable>();
@@ -32,6 +39,9 @@ namespace InsertYourSoul.PlayerController
             handlers.Add(animationHandler = new AnimationHandler(this));
         }
 
+        public AbilityHandler abilityHandler;
+        public bool IsCasting => abilityHandler.IsCasting;
+
         public bool IsMoving => CharacterVelocity > 0f;
         public float CharacterVelocity
         {
@@ -47,6 +57,9 @@ namespace InsertYourSoul.PlayerController
 
         private void Awake()
         {
+            character = GetComponent<ICharacter>();
+            abilityHandler = GetComponent<AbilityHandler>();
+            aimIndicator = GameObject.FindGameObjectWithTag("TargetIndicator").GetComponent<IProvideAimData>();
             model.Initialize(GetComponent<CharacterController>(), this.transform, GetComponent<Animator>());
 
             DeclareHandlers();
@@ -55,6 +68,12 @@ namespace InsertYourSoul.PlayerController
 
         private void FixedUpdate()
         {
+            if (!IsAlive)
+            {
+                animationHandler.DieAnimation();
+                return;
+            }
+
             foreach (ITickable handler in handlers)
             {
                 handler.Tick();

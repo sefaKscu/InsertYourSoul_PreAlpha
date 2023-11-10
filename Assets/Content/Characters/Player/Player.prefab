@@ -107,6 +107,7 @@ MonoBehaviour:
     gravity: 9.8
     groundedGravity: 0.6
     rotationFactorPerFrame: 10
+  abilityHandler: {fileID: 0}
 --- !u!114 &7584074069762647066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,26 +176,26 @@ MonoBehaviour:
       TargetPosition: {x: 0, y: 0, z: 0}
       TargetDirection: {x: 0, y: 0, z: 0}
   AbilitySlots:
-  - ability: {fileID: 11400000, guid: dafee59d5ab6b75478c88ec08d9efb1a, type: 2}
-    state: 0
+  - Ability: {fileID: 11400000, guid: dafee59d5ab6b75478c88ec08d9efb1a, type: 2}
+    State: 0
     ActiveTimeCounter: 0
     CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: ff7806b729a64584ebca78eacc7e9dd5, type: 2}
     IsDebuggin: 0
-  - ability: {fileID: 11400000, guid: 83d1a5d480523dc4ab64be204371adae, type: 2}
-    state: 0
+  - Ability: {fileID: 11400000, guid: 83d1a5d480523dc4ab64be204371adae, type: 2}
+    State: 0
     ActiveTimeCounter: 0
     CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: dd957683806fc134aba2437d8f679d38, type: 2}
     IsDebuggin: 0
-  - ability: {fileID: 11400000, guid: 4136f2b62b4492f48b247056667f4fd9, type: 2}
-    state: 0
+  - Ability: {fileID: 11400000, guid: d1f2d540a5eda8346a85ca373f8fd3b0, type: 2}
+    State: 0
     ActiveTimeCounter: 0
     CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: 669d3d87ac93096469c79d9b9648fcaf, type: 2}
     IsDebuggin: 0
-  - ability: {fileID: 11400000, guid: 2e0ef3d26b2283744a97f8367b475064, type: 2}
-    state: 0
+  - Ability: {fileID: 11400000, guid: 141559499cd69424788a9e140ff5629f, type: 2}
+    State: 0
     ActiveTimeCounter: 0
     CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: fa30c4a5cadc15d419d9c871996f379f, type: 2}
@@ -247,7 +248,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4475231302126899967}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

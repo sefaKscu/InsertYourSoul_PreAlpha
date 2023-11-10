@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb57f50f90801b43904b29c6db4a1bc, type: 3}
-  m_Name: ChaosProjectile
+  m_Script: {fileID: 11500000, guid: 7ab4c2ef97ff1f74ea184b788500ce13, type: 3}
+  m_Name: LightningStrike
   m_EditorClassIdentifier: 
-  abilityName: Chaos Projectile
-  icon: {fileID: 21300000, guid: 20fe2146083099744874d1d0981d9a61, type: 3}
-  AbilityPrefab: {fileID: 2817812358603312203, guid: 4672613339441c040ab6d317119acc44,
+  abilityName: Lightning Strike
+  icon: {fileID: 21300000, guid: 8efec180de8b76f4582bf27b07967a9c, type: 3}
+  AbilityPrefab: {fileID: 271205569909577594, guid: db52c1fe02f02e74ca9a96901f9b2a26,
     type: 3}
-  description: "chaos blasts into your foes faces\t"
+  description: Roar of thunder
   activeSeconds: 1
   cooldownSeconds: 0.3
   manaCost: 5

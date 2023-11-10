@@ -13,8 +13,18 @@ namespace InsertYourSoul.PlayerController
         private Transform ParentTransform => parent.Model.Transform;
         private Animator ParentAnimator => parent.Model.Animator;
         private float RotationFactorPerFrame => parent.Model.RotationFactorPerFrame;
-        private Vector3 PositionToLookAt => parent.InputData.AimDirectionRaw.normalized;
-
+        private bool IsAiming => parent.InputData.IsAiming || parent.InputData.IsAimingWithMouse;
+        private Vector3 PositionToLookAt
+        {
+            get
+            {                
+                if (IsAiming)
+                    return parent.AimData.TargetDirection;
+                else
+                    return parent.InputData.AimDirectionRaw.normalized;
+            }
+        }
+        //private Vector3 PositionToLookAt => parent.AimData.TargetDirection;
         public void Tick()
         {
             if (RotationLogic())
