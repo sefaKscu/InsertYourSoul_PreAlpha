@@ -35,9 +35,14 @@ namespace InsertYourSoul.AbilitySystem
         }
         private void TickSlots()
         {
-            foreach (var slot in AbilitySlots.Where(slot => slot != null))
+            //foreach (var slot in AbilitySlots.Where(slot => slot != null))
+            //{
+            //    slot.Tick();
+            //}
+            foreach (var slot in AbilitySlots)
             {
-                slot.Tick();
+                if (slot != null)
+                    slot.Tick();
             }
         }
 

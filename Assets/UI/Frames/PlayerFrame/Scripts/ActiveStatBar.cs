@@ -27,11 +27,32 @@ namespace InsertYourSoul.UI
             UpdateText();
         }
 
+        private float tickInterval = 0.1f;
+        private float tickCounter;
+
+        private bool CounterLogic()
+        {
+            if (tickCounter > 0)
+            {
+                tickCounter -= Time.deltaTime;
+                return true;
+            }
+            else
+            {
+                tickCounter = tickInterval;
+                return false;
+            }            
+        }
+
         private void CacheData()
         {
             totalValue = (int)statToShow.StatData.TotalValue;
             currentValue = (int)statToShow.StatData.CurrentValue;
             currentPercentValue = statToShow.StatData.CurrentPercentValue;
+
+            if (CounterLogic())
+                return;
+
             textValue = ActiveStatToString(currentValue, totalValue);
         }
 
