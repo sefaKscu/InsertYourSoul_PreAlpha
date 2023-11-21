@@ -31,6 +31,12 @@ namespace InsertYourSoul
         private void OnTriggerEnter(Collider other)
         {
             spellBody.velocity = Vector3.zero;
+
+            IDamagable _damagable;
+            if (other.TryGetComponent<IDamagable>(out _damagable))
+                _damagable.TakeDamage(new DamageData(DamageType.Chaos, 30f, false, 0f, references.Source));
+
+
             Destroy(this.gameObject, 0.1f);
             ParticleSystem _explosion = Instantiate(explosionPrefab, this.transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
             _explosion.Play();

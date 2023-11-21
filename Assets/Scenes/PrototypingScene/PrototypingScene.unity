@@ -560,6 +560,72 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 2974744384752552809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &331271323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 331271325}
+  - component: {fileID: 331271324}
+  - component: {fileID: 331271326}
+  m_Layer: 0
+  m_Name: Damager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!65 &331271324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331271323}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 1, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &331271325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331271323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &331271326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331271323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affb3afadaef99b449ec26698c71c38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &383299978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2666,6 +2732,7 @@ GameObject:
   - component: {fileID: 1759228245}
   - component: {fileID: 1759228244}
   - component: {fileID: 1759228248}
+  - component: {fileID: 1759228249}
   m_Layer: 7
   m_Name: EnemyDummy
   m_TagString: Enemy
@@ -2788,6 +2855,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1759228249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759228243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1338114d718df074a932b2d69ba5683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTemplate: {fileID: 11400000, guid: 99a09dcd8d3cf874685a4a12296436f7, type: 2}
 --- !u!1 &1776376673
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,10 +3357,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2063940193}
     m_Modifications:
+    - target: {fileID: 2480935751732346213, guid: 4672613339441c040ab6d317119acc44,
+        type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 2817812358603312203, guid: 4672613339441c040ab6d317119acc44,
         type: 3}
       propertyPath: m_Name
       value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817812358603312203, guid: 4672613339441c040ab6d317119acc44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5927785286905889690, guid: 4672613339441c040ab6d317119acc44,
         type: 3}
@@ -3759,3 +3849,4 @@ SceneRoots:
   - {fileID: 510656591}
   - {fileID: 2063940193}
   - {fileID: 1759228247}
+  - {fileID: 331271325}

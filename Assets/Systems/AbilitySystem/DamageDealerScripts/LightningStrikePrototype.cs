@@ -53,16 +53,5 @@ namespace InsertYourSoul
             }
             return true;
         }
-
-        private void OnParticleCollision(GameObject other)
-        {
-            Debug.Log("hit");
-            IDamagable _damagable;
-            if (other.TryGetComponent<IDamagable>(out _damagable))
-            {
-                _damagable.TakeDamage(new DamageData(DamageType.Chaos, 50f, false, 0f, this.transform));
-                Debug.Log(_damagable.GetType().Name);
-            }
-        }
     }
 }
