@@ -14,16 +14,13 @@ namespace InsertYourSoul.PlayerController
 
         // References
         private CharacterController ParentCharacterController => parent.Model.CharacterController;
-
         public bool IsDashing => dashState == DashState.Active;
-
         private float RunSpeedConstant => parent.Model.RunSpeedConstant;
         private Vector3 InputVector => parent.InputData.MovementDirection;
         private float GravityAxisValue => parent.GravityAxisValue;
         private bool IsMovementPressed => parent.InputData.IsMovementPressed;
-
-
         private bool IsMoving => CharacterVelocity > 0f;
+        private float MovementSpeedConstant => RunSpeedConstant;
         private float CharacterVelocity
         {
             get
@@ -34,8 +31,6 @@ namespace InsertYourSoul.PlayerController
                 return velocityVector.magnitude;
             }
         }
-        private float MovementSpeedConstant => RunSpeedConstant;
-
         public Vector3 CachedInputVector 
         {
             get 
@@ -76,16 +71,20 @@ namespace InsertYourSoul.PlayerController
             _vectorToApply.z = _movementVector.z * _movementSpeed;
             ParentCharacterController.Move(_vectorToApply * Time.fixedDeltaTime);
         }
-        private const float dashMultilier = 5f;
+
+        #region Dash
+        private const float dashSpeedMultilier = 8f;
+        private const float activeTime = 0.1f;
+        private const float cooldownTime = 1f;
+
+        private DashState dashState;
+        private float activeCounter;
+        private float cooldownCounter;
         private void Dash()
         {
-            Move(parent.SelfTransform.forward * dashMultilier, GravityAxisValue, MovementSpeedConstant);
+            Move(parent.SelfTransform.forward * dashSpeedMultilier, GravityAxisValue, MovementSpeedConstant);
         }
-        private DashState dashState;
-        private const float activeTime = 0.15f;
-        private float activeCounter;
-        private const float cooldownTime = 1f;
-        private float cooldownCounter;
+
         private void SwitchDashStates()
         {
             switch (dashState)
@@ -122,9 +121,7 @@ namespace InsertYourSoul.PlayerController
                         dashState = DashState.Ready;
                     }
                     break;
-                    
             }
-            Debug.Log("Dash " + dashState);
         }
 
         private void SwitchToCooldown()
@@ -132,11 +129,13 @@ namespace InsertYourSoul.PlayerController
             dashState = DashState.Cooldown;
             cooldownCounter = cooldownTime;
         }
+        #endregion
     }
-    public enum DashState
+    internal enum DashState
     {
         Ready,
         Active,
         Cooldown
     }
+
 }

@@ -42,25 +42,25 @@ namespace InsertYourSoul.CharacterSystem
         private void InitializeStatProcessors()
         {
             // Vitals
-            life = new ActiveStatProcessor(characterTemplate.Life); StatProcessors.Add(life);
-            mana = new ActiveStatProcessor(characterTemplate.Mana); StatProcessors.Add(mana);
+            StatProcessors.Add(life = new ActiveStatProcessor(characterTemplate.Life));
+            StatProcessors.Add(mana = new ActiveStatProcessor(characterTemplate.Mana));
             // Regen
-            lifeRegen = new PassiveStatProcessor(characterTemplate.LifeRegen); StatProcessors.Add(lifeRegen);
-            manaRegen = new PassiveStatProcessor(characterTemplate.ManaRegen); StatProcessors.Add(manaRegen);
+            StatProcessors.Add(lifeRegen = new PassiveStatProcessor(characterTemplate.LifeRegen));
+            StatProcessors.Add(manaRegen = new PassiveStatProcessor(characterTemplate.ManaRegen));
             // Misc
-            moveSpeed = new PassiveStatProcessor(characterTemplate.MoveSpeed); StatProcessors.Add(moveSpeed);
-            lightRadius = new PassiveStatProcessor(characterTemplate.LightRadius); StatProcessors.Add(lightRadius);
+            StatProcessors.Add(moveSpeed = new PassiveStatProcessor(characterTemplate.MoveSpeed));
+            StatProcessors.Add(lightRadius = new PassiveStatProcessor(characterTemplate.LightRadius));
             // Mitigation
-            armor = new DefensiveStatProcessor(new Stat(StatType.Armor, 0f), DamageType.Physical); StatProcessors.Add(armor);
-            radiantResistance = new DefensiveStatProcessor(new Stat(StatType.RadiantResistance, 0f), DamageType.Radiant); StatProcessors.Add(radiantResistance);
-            chaosResistance = new DefensiveStatProcessor(new Stat(StatType.ChaosResistance, 0f), DamageType.Chaos); StatProcessors.Add(chaosResistance);
+            StatProcessors.Add(armor = new DefensiveStatProcessor(new Stat(StatType.Armor, 0f), DamageType.Physical));
+            StatProcessors.Add(radiantResistance = new DefensiveStatProcessor(new Stat(StatType.RadiantResistance, 0f), DamageType.Radiant));
+            StatProcessors.Add(chaosResistance = new DefensiveStatProcessor(new Stat(StatType.ChaosResistance, 0f), DamageType.Chaos));
             // Cast
-            reducedCastTime = new StatProcessor(StatType.ReducedCastTime); StatProcessors.Add(reducedCastTime);
-            reducedManaCost = new StatProcessor(StatType.ReducedManaCost); StatProcessors.Add(reducedManaCost);
+            StatProcessors.Add(reducedCastTime = new StatProcessor(StatType.ReducedCastTime));
+            StatProcessors.Add(reducedManaCost = new StatProcessor(StatType.ReducedManaCost));
             // Damage
-            physicalDamage = new StatProcessor(StatType.PhysicalDamage); StatProcessors.Add(physicalDamage);
-            radiantDamage = new StatProcessor(StatType.RadiantDamage); StatProcessors.Add(radiantDamage);
-            chaosDamage = new StatProcessor(StatType.ChaosDamage); StatProcessors.Add(chaosDamage);
+            StatProcessors.Add(physicalDamage = new StatProcessor(StatType.PhysicalDamage));
+            StatProcessors.Add(radiantDamage = new StatProcessor(StatType.RadiantDamage));
+            StatProcessors.Add(chaosDamage = new StatProcessor(StatType.ChaosDamage));
 
             Debugger("Stats Initialized");
         }

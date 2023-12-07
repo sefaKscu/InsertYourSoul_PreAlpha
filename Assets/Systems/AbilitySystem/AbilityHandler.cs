@@ -25,6 +25,7 @@ namespace InsertYourSoul.AbilitySystem
                 return false;
             }
         }
+
         public AbilitySlot[] AbilitySlots = new AbilitySlot[4];
         private void SetSlots()
         {
@@ -35,10 +36,6 @@ namespace InsertYourSoul.AbilitySystem
         }
         private void TickSlots()
         {
-            //foreach (var slot in AbilitySlots.Where(slot => slot != null))
-            //{
-            //    slot.Tick();
-            //}
             foreach (var slot in AbilitySlots)
             {
                 if (slot != null)

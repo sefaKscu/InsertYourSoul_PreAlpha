@@ -45,10 +45,12 @@ namespace InsertYourSoul.PlayerController
         }
         private void HandleRotation()
         {
-
             // Begin & End values of rotation
             currentRotation = ParentTransform.rotation;
             targetRotation = Quaternion.LookRotation(PositionToLookAt);
+            // Reset x and z axis of rotation
+            targetRotation.x = 0f;
+            targetRotation.z = 0f;
 
 
             // Interpolate Rotation

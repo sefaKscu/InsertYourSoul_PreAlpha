@@ -66,7 +66,6 @@ namespace InsertYourSoul.PlayerController
             abilityHandler = GetComponent<AbilityHandler>();
             aimIndicator = GameObject.FindGameObjectWithTag("TargetIndicator").GetComponent<IProvideAimData>();
             model.Initialize(GetComponent<CharacterController>(), this.transform, GetComponent<Animator>());
-
             DeclareHandlers();
         }
 
