@@ -17,7 +17,7 @@ namespace InsertYourSoul.AbilitySystem
             {
                 foreach (AbilitySlot slot in AbilitySlots)
                 {
-                    if (slot.IsActive)
+                    if (slot.IsActive || slot.State == AbilitySlotState.Cooldown)
                     {
                         return true;
                     }

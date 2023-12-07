@@ -62,7 +62,9 @@ namespace InsertYourSoul.CameraController
         }
         private Vector3 AddOffsetToTargetPosition(Vector3 _offset)
         {
-            return target.position + _offset;
+            Vector3 vectorToReturn = target.position;
+            //vectorToReturn.y = 0f;
+            return vectorToReturn + _offset;
         }
 
         #endregion

@@ -27,6 +27,8 @@ namespace InsertYourSoul.PlayerController
         public bool IsAlive => character.IsAlive;
         public bool IsCasting => abilityHandler.IsCasting;
         public bool IsMoving => CharacterVelocity > 0f;
+        public bool IsDashing => movementHandler.IsDashing;
+        public Transform SelfTransform => this.transform;
 
 
         private List<ITickable> handlers = new List<ITickable>();
@@ -54,7 +56,9 @@ namespace InsertYourSoul.PlayerController
                 return velocityVector.magnitude;
             }
         }
-        public float GravityAxis => gravityHandler.GravityAxis;
+        public float GravityAxisValue => gravityHandler.GravityAxis;
+
+       
 
         private void Awake()
         {

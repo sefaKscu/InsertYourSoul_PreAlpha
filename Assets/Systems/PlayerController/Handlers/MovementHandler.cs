@@ -8,16 +8,18 @@ namespace InsertYourSoul.PlayerController
         public MovementHandler(IPlayerController parent)
         {
             this.parent = parent;
+            dashState = DashState.Ready;
         }
 
 
         // References
         private CharacterController ParentCharacterController => parent.Model.CharacterController;
 
+        public bool IsDashing => dashState == DashState.Active;
 
         private float RunSpeedConstant => parent.Model.RunSpeedConstant;
         private Vector3 InputVector => parent.InputData.MovementDirection;
-        private float GravityAxis => parent.GravityAxis;
+        private float GravityAxisValue => parent.GravityAxisValue;
         private bool IsMovementPressed => parent.InputData.IsMovementPressed;
 
 
@@ -56,7 +58,8 @@ namespace InsertYourSoul.PlayerController
 
         public void Tick()
         {
-            Move(CachedInputVector, GravityAxis, MovementSpeedConstant);
+            Move(CachedInputVector, GravityAxisValue, MovementSpeedConstant);
+            SwitchDashStates();
         }
 
         /// <summary>
@@ -73,5 +76,67 @@ namespace InsertYourSoul.PlayerController
             _vectorToApply.z = _movementVector.z * _movementSpeed;
             ParentCharacterController.Move(_vectorToApply * Time.fixedDeltaTime);
         }
+        private const float dashMultilier = 5f;
+        private void Dash()
+        {
+            Move(parent.SelfTransform.forward * dashMultilier, GravityAxisValue, MovementSpeedConstant);
+        }
+        private DashState dashState;
+        private const float activeTime = 0.15f;
+        private float activeCounter;
+        private const float cooldownTime = 1f;
+        private float cooldownCounter;
+        private void SwitchDashStates()
+        {
+            switch (dashState)
+            {
+                case DashState.Ready:
+                    if (parent.InputData.IsSprintPressed)
+                    {
+                        dashState = DashState.Active;
+                        activeCounter = activeTime;
+                    }
+                    break;
+                case DashState.Active:
+                    if (activeCounter > 0)
+                    {
+                        Dash();
+                        activeCounter -= Time.fixedDeltaTime;
+                        if (CharacterVelocity <= 1f)
+                            SwitchToCooldown();
+                    }
+                    else
+                    {
+                        activeCounter = 0f;
+                        SwitchToCooldown();
+                    }
+                    break;
+                case DashState.Cooldown:
+                    if (cooldownCounter > 0)
+                    {
+                        cooldownCounter -= Time.fixedDeltaTime;
+                    }
+                    else
+                    {
+                        cooldownCounter = 0f;
+                        dashState = DashState.Ready;
+                    }
+                    break;
+                    
+            }
+            Debug.Log("Dash " + dashState);
+        }
+
+        private void SwitchToCooldown()
+        {
+            dashState = DashState.Cooldown;
+            cooldownCounter = cooldownTime;
+        }
+    }
+    public enum DashState
+    {
+        Ready,
+        Active,
+        Cooldown
     }
 }

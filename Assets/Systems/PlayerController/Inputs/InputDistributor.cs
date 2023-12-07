@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace InsertYourSoul.PlayerController
 {
+    /// <summary>
+    /// Finds an input provider on the gameObject and distributes to the receivers.
+    /// </summary>
     [RequireComponent(typeof(InputHandler))]
     public class InputDistributor : MonoBehaviour
     {

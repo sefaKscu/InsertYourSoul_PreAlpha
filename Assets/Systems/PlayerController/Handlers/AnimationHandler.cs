@@ -11,6 +11,7 @@ namespace InsertYourSoul.PlayerController
         private const string isAiming = "isAiming";
         private const string isCasting = "isCasting";
         private const string isDead = "isDead";
+        private const string isDashing = "isDashing";
 
 
         private IPlayerController parent;
@@ -35,6 +36,7 @@ namespace InsertYourSoul.PlayerController
             Animator.SetFloat(velocity, parent.CharacterVelocity, 0.1f, Time.fixedDeltaTime);
             Animator.SetBool(isAiming, parent.InputData.IsAiming || parent.InputData.IsAimingWithMouse);
             Animator.SetBool(isCasting, parent.IsCasting);
+            Animator.SetBool(isDashing, parent.IsDashing);
         }
 
         public void DieAnimation()

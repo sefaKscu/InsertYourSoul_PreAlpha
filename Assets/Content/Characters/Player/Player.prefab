@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1467368279254319374}
   - component: {fileID: 6655433947112605662}
   - component: {fileID: 8410336360111211253}
+  - component: {fileID: 6527636834592942857}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -77,9 +78,9 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d532ba43712f1af4692e7e1c0654b940, type: 3}
   m_Controller: {fileID: 9100000, guid: bd3a70857426b7647a1984d4610006c7, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -107,7 +108,6 @@ MonoBehaviour:
     gravity: 9.8
     groundedGravity: 0.6
     rotationFactorPerFrame: 10
-  abilityHandler: {fileID: 0}
 --- !u!114 &7584074069762647066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,28 +178,35 @@ MonoBehaviour:
   AbilitySlots:
   - Ability: {fileID: 11400000, guid: dafee59d5ab6b75478c88ec08d9efb1a, type: 2}
     State: 0
-    ActiveTimeCounter: 0
-    CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: ff7806b729a64584ebca78eacc7e9dd5, type: 2}
-    IsDebuggin: 0
   - Ability: {fileID: 11400000, guid: 83d1a5d480523dc4ab64be204371adae, type: 2}
     State: 0
-    ActiveTimeCounter: 0
-    CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: dd957683806fc134aba2437d8f679d38, type: 2}
-    IsDebuggin: 0
   - Ability: {fileID: 11400000, guid: d1f2d540a5eda8346a85ca373f8fd3b0, type: 2}
     State: 0
-    ActiveTimeCounter: 0
-    CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: 669d3d87ac93096469c79d9b9648fcaf, type: 2}
-    IsDebuggin: 0
   - Ability: {fileID: 11400000, guid: 141559499cd69424788a9e140ff5629f, type: 2}
     State: 0
-    ActiveTimeCounter: 0
-    CooldownTimeCounter: 0
     SlotData: {fileID: 11400000, guid: fa30c4a5cadc15d419d9c871996f379f, type: 2}
-    IsDebuggin: 0
+--- !u!114 &6527636834592942857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543056412889292190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b9d28cf0e84df41bbf3fbe3fa416e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ComboAttacks:
+  - {fileID: 11400000, guid: 52e42787751c1d2478424ae1667fc0a3, type: 2}
+  - {fileID: 11400000, guid: 1e1035708f41eed48a46e67e8bde82e6, type: 2}
+  - {fileID: 11400000, guid: ee0f0e6fae826a74297a8cc894bd61c4, type: 2}
+  ComboCount: 0
+  ComboWindow: 0
+  ComboCooldown: 0.5
 --- !u!1 &4475231302126899967
 GameObject:
   m_ObjectHideFlags: 0

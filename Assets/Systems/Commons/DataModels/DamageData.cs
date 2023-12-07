@@ -36,6 +36,7 @@ namespace InsertYourSoul
     /// <summary>
     /// Basic damage stat. Has a min and max value. 
     /// </summary>
+    [System.Serializable]
     public struct DamageStat
     {
         public DamageType Type;
