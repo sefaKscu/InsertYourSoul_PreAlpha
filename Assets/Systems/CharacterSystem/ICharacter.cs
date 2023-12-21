@@ -1,4 +1,5 @@
 ﻿using InsertYourSoul.ItemSystem;
+using InsertYourSoul.StatSystem;
 
 namespace InsertYourSoul.CharacterSystem
 {

@@ -1,4 +1,4 @@
-﻿namespace InsertYourSoul
+﻿namespace InsertYourSoul.StatSystem
 {
     public enum ModType
     {
@@ -15,11 +15,5 @@
         public int Order;
         public float Value;
         public object Source;
-    }
-
-    [System.Serializable]
-    public class DamageStatModifier : StatModifier
-    {
-        public DamageType DamageType;
     }
 }

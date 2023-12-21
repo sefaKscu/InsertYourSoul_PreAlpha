@@ -1,4 +1,4 @@
-﻿namespace InsertYourSoul
+﻿namespace InsertYourSoul.StatSystem
 {
     [System.Serializable]
     public struct ActiveStatViewData

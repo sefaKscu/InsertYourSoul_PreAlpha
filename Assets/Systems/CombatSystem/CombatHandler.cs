@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace InsertYourSoul
@@ -22,11 +23,21 @@ namespace InsertYourSoul
                 animator = GetComponent<Animator>();
         }
 
+        public float interval;
+        public float counter;
+        bool isAttacking = false;
+
         private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) isAttacking = true;
+        }
+
+        private void FixedUpdate()
         {            
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (isAttacking)
             {
                 Attack();
+                isAttacking = false;
             }
 
             if (ComboCount > 0)
@@ -38,6 +49,7 @@ namespace InsertYourSoul
                 EndCombo();
             }
         }
+
 
         private void Attack()
         {

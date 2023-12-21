@@ -1,5 +1,5 @@
 using InsertYourSoul.AbilitySystem;
-using UnityEditor;
+using InsertYourSoul.StatSystem;
 using UnityEngine;
 
 namespace InsertYourSoul

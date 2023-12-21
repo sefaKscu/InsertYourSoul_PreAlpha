@@ -1,4 +1,4 @@
-﻿namespace InsertYourSoul
+﻿namespace InsertYourSoul.StatSystem
 {
     /// <summary>
     /// This is the data type damageStats holds and returns. 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using InsertYourSoul.StatSystem;
 
 namespace InsertYourSoul
 {
