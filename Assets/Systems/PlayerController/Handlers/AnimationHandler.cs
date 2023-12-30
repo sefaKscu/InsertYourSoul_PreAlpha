@@ -30,7 +30,7 @@ namespace InsertYourSoul.PlayerController
         private void HandleAnimation()
         {
             if (Animator == null)
-                return;            
+                return;
 
             Animator.SetBool(isMoving, parent.IsMoving);
             Animator.SetFloat(velocity, parent.CharacterVelocity, 0.1f, Time.fixedDeltaTime);
