@@ -1,0 +1,4 @@
+repository "InsertYourSoul@explayer1@cloud"
+  path "/"
+    br "/main"
+    co "/main"

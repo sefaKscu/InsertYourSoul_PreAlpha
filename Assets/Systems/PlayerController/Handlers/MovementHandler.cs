@@ -56,6 +56,7 @@ namespace InsertYourSoul.PlayerController
             Move(CachedInputVector, GravityAxisValue, MovementSpeedConstant);
             SwitchDashStates();
         }
+        AnimatorStateInfo animState => parent.Model.Animator.GetCurrentAnimatorStateInfo(0);
 
         /// <summary>
         /// This method designed to be called before and after the movement method calls.
@@ -66,9 +67,12 @@ namespace InsertYourSoul.PlayerController
         {
             Vector3 _vectorToApply = Vector3.zero;
             // Apply values to movement vector
-            _vectorToApply.x = _movementVector.x * _movementSpeed;
+            if (!animState.IsName("Attack"))
+            {
+                _vectorToApply.x = _movementVector.x * _movementSpeed;
+                _vectorToApply.z = _movementVector.z * _movementSpeed;
+            }
             _vectorToApply.y = _gravityAxis;
-            _vectorToApply.z = _movementVector.z * _movementSpeed;
             ParentCharacterController.Move(_vectorToApply * Time.fixedDeltaTime);
         }
 
